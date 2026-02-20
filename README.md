@@ -7,6 +7,21 @@
 ###    kubectl installed
 ###    A Kubernetes cluster (Minikube, kind, or Docker Desktop)
 
+## Project Structure
+
+```markdown
+
+k8s-portfolio/
+├── website/
+│   └── index.html
+├── Dockerfile
+├── deployment.yaml
+├── service.yaml
+└── ingress.yaml (optional)
+
+```
+
+
 ## Step 1: Set Up Your Local Kubernetes Cluster
 
 ## Option A: Using Minikube (Recommended for beginners)
@@ -159,7 +174,26 @@ kubectl get service portfolio-service
 
 ```
 
-## Step 8: Useful Management Commands
+## Step 8: Optional - Create Ingress for Domain Access
+
+### Create ingress.yaml
+
+### For Minikube, enable ingress:
+
+```bash
+
+minikube addons enable ingress
+kubectl apply -f ingress.yaml
+
+# Add to /etc/hosts
+echo "$(minikube ip) portfolio.local" | sudo tee -a /etc/hosts
+
+```
+
+### Access via: http://portfolio.local
+
+
+## Step 9: Useful Management Commands
 
 ```bash
 
@@ -185,7 +219,7 @@ kubectl port-forward service/portfolio-service 8080:80
 
 ```
 
-## Step 9: Clean Up
+## Step 10: Clean Up
 
 ```bash
 
@@ -240,14 +274,14 @@ minikube service list
 kubectl get events --sort-by=.metadata.creationTimestamp
 
 ```
-![kubectl_get_all](https://github.com/user-attachments/assets/b7bb0ec6-868a-441c-9436-361310cbb81c)
-![kubectl_get](https://github.com/user-attachments/assets/cf807743-e721-4c4c-ad50-7b76e61b8d89)
+![kubectl_get_all](images/kubectl_get_all.jpg)
+
+![kubectl_get](images/kubectl_get.jpg)
 
 
-![wadah_portfolio_website_1](https://github.com/user-attachments/assets/fea2c89b-5c3a-4fc4-858f-73e7fa2a66b9)
-![wadah_portfolio_website_2](https://github.com/user-attachments/assets/28fe7ad3-96c5-4f13-b5ea-79de10c8f0e5)
-![wadah_portfolio_website_3](https://github.com/user-attachments/assets/b11e212c-9c58-4208-88b4-acf1f71f9562)
-![wadah_portfolio_website_4](https://github.com/user-attachments/assets/32cbe136-c541-498b-acf7-68a26e6269eb)
-
+![wadah_portfolio_website_1](images/wadah_portfolio_website_1.jpg)
+![wadah_portfolio_website_2](images/wadah_portfolio_website_2.jpg)
+![wadah_portfolio_website_3](images/wadah_portfolio_website_3.jpg)
+![wadah_portfolio_website_4](images/wadah_portfolio_website_4.jpg)
 
 
