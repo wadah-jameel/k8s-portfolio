@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-service
+spec:
+  type: NodePort  # Use LoadBalancer for cloud providers
+  selector:
+    app: portfolio
+  ports:
+    - protocol: TCP
+      port: 80        # Service port
+      targetPort: 80  # Container port
+      nodePort: 30080 # External access port (30000-32767 range)
